@@ -9283,9 +9283,9 @@ bool Isis::Instances::Instance::Interfaces::Interface::LspIntervals::LspInterval
     return false;
 }
 
-const Enum::YLeaf Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::InterfaceAfData::Metrics::Metric::Metric::maximum {16777215, "maximum"};
+const Enum::YLeaf Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::InterfaceAfData::Metrics::Metric::Metric_::maximum {16777215, "maximum"};
 
-const Enum::YLeaf Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::TopologyName::Metrics::Metric::Metric::maximum {16777215, "maximum"};
+const Enum::YLeaf Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::TopologyName::Metrics::Metric::Metric_::maximum {16777215, "maximum"};
 
 
 }

@@ -28,14 +28,14 @@ class LspOperStatus : public virtual ydk::Identity
 
 }; // LspOperStatus
 
-class TunnelType : public virtual ydk::Identity
+class TunnelType_ : public virtual ydk::Identity
 {
     public:
-        TunnelType();
-        ~TunnelType();
+        TunnelType_();
+        ~TunnelType_();
 
 
-}; // TunnelType
+}; // TunnelType_
 
 class LspRole : public virtual ydk::Identity
 {
@@ -172,7 +172,7 @@ class Up : public openconfig_mpls_types::LspOperStatus, virtual ydk::Identity
 
 }; // Up
 
-class P2Mp : public openconfig_mpls_types::TunnelType, virtual ydk::Identity
+class P2Mp : public openconfig_mpls_types::TunnelType_, virtual ydk::Identity
 {
     public:
         P2Mp();
@@ -199,7 +199,7 @@ class Unprotected : public openconfig_mpls_types::ProtectionType, virtual ydk::I
 
 }; // Unprotected
 
-class P2P : public openconfig_mpls_types::TunnelType, virtual ydk::Identity
+class P2P : public openconfig_mpls_types::TunnelType_, virtual ydk::Identity
 {
     public:
         P2P();

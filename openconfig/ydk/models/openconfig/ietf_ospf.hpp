@@ -12,7 +12,7 @@
 namespace openconfig {
 namespace ietf_ospf {
 
-class Ospfv3 : public ietf_routing::RoutingProtocol, virtual ydk::Identity
+class Ospfv3 : public ietf::ietf_routing::RoutingProtocol, virtual ydk::Identity
 {
     public:
         Ospfv3();
@@ -48,7 +48,7 @@ class IfLinkType : public virtual ydk::Identity
 
 }; // IfLinkType
 
-class Ospf : public ietf_routing::RoutingProtocol, virtual ydk::Identity
+class Ospf : public ietf::ietf_routing::RoutingProtocol, virtual ydk::Identity
 {
     public:
         Ospf();
@@ -57,7 +57,7 @@ class Ospf : public ietf_routing::RoutingProtocol, virtual ydk::Identity
 
 }; // Ospf
 
-class Ospfv2 : public ietf_routing::RoutingProtocol, virtual ydk::Identity
+class Ospfv2 : public ietf::ietf_routing::RoutingProtocol, virtual ydk::Identity
 {
     public:
         Ospfv2();

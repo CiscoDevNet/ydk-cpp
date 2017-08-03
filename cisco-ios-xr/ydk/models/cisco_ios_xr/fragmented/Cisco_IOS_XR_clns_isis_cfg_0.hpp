@@ -1650,7 +1650,7 @@ class Isis::Instances::Instance::Afs::Af::AfData::Metrics::Metric : public ydk::
 
         ydk::YLeaf level; //type: IsisInternalLevel
         ydk::YLeaf metric; //type: one of uint32, enumeration
-        class Metric;
+        class Metric_;
 
 }; // Isis::Instances::Instance::Afs::Af::AfData::Metrics::Metric
 
@@ -2964,7 +2964,7 @@ class Isis::Instances::Instance::Afs::Af::TopologyName::Metrics::Metric : public
 
         ydk::YLeaf level; //type: IsisInternalLevel
         ydk::YLeaf metric; //type: one of uint32, enumeration
-        class Metric;
+        class Metric_;
 
 }; // Isis::Instances::Instance::Afs::Af::TopologyName::Metrics::Metric
 
@@ -4116,14 +4116,14 @@ class IsisMibMaxAreaAddressMismatchBoolean : public ydk::Enum
 
 };
 
-class Isis::Instances::Instance::Afs::Af::AfData::Metrics::Metric::Metric : public ydk::Enum
+class Isis::Instances::Instance::Afs::Af::AfData::Metrics::Metric::Metric_ : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf maximum;
 
 };
 
-class Isis::Instances::Instance::Afs::Af::TopologyName::Metrics::Metric::Metric : public ydk::Enum
+class Isis::Instances::Instance::Afs::Af::TopologyName::Metrics::Metric::Metric_ : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf maximum;

@@ -19148,9 +19148,9 @@ const Enum::YLeaf IsisMibOriginatedLspBufferSizeMismatchBoolean::true_ {15, "tru
 const Enum::YLeaf IsisMibMaxAreaAddressMismatchBoolean::false_ {0, "false"};
 const Enum::YLeaf IsisMibMaxAreaAddressMismatchBoolean::true_ {6, "true"};
 
-const Enum::YLeaf Isis::Instances::Instance::Afs::Af::AfData::Metrics::Metric::Metric::maximum {16777215, "maximum"};
+const Enum::YLeaf Isis::Instances::Instance::Afs::Af::AfData::Metrics::Metric::Metric_::maximum {16777215, "maximum"};
 
-const Enum::YLeaf Isis::Instances::Instance::Afs::Af::TopologyName::Metrics::Metric::Metric::maximum {16777215, "maximum"};
+const Enum::YLeaf Isis::Instances::Instance::Afs::Af::TopologyName::Metrics::Metric::Metric_::maximum {16777215, "maximum"};
 
 const Enum::YLeaf Isis::Instances::Instance::Interfaces::Interface::MeshGroup::blocked {0, "blocked"};
 

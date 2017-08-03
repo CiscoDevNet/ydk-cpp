@@ -1064,7 +1064,7 @@ class Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceA
 
         ydk::YLeaf level; //type: IsisInternalLevel
         ydk::YLeaf metric; //type: one of uint32, enumeration
-        class Metric;
+        class Metric_;
 
 }; // Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::InterfaceAfData::Metrics::Metric
 
@@ -1778,7 +1778,7 @@ class Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceA
 
         ydk::YLeaf level; //type: IsisInternalLevel
         ydk::YLeaf metric; //type: one of uint32, enumeration
-        class Metric;
+        class Metric_;
 
 }; // Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::TopologyName::Metrics::Metric
 
@@ -1917,14 +1917,14 @@ class Isis::Instances::Instance::Interfaces::Interface::LspIntervals::LspInterva
 
 }; // Isis::Instances::Instance::Interfaces::Interface::LspIntervals::LspInterval
 
-class Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::InterfaceAfData::Metrics::Metric::Metric : public ydk::Enum
+class Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::InterfaceAfData::Metrics::Metric::Metric_ : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf maximum;
 
 };
 
-class Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::TopologyName::Metrics::Metric::Metric : public ydk::Enum
+class Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::TopologyName::Metrics::Metric::Metric_ : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf maximum;

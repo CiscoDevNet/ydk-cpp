@@ -852,11 +852,11 @@ class Other : public ietf_event_notifications::SubscriptionErrors, virtual ydk::
 
 }; // Other
 
-class Netconf : public ietf_event_notifications::Stream, virtual ydk::Identity
+class NETCONF : public ietf_event_notifications::Stream, virtual ydk::Identity
 {
     public:
-        Netconf();
-        ~Netconf();
+        NETCONF();
+        ~NETCONF();
 
 
 }; // Netconf
