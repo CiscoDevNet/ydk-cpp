@@ -3894,7 +3894,7 @@ class Native::Line::Aux::Password::Type : public ydk::Enum
 
 };
 
-class Native::Line::Aux::Transport::Input::Input : public ydk::Enum
+class Native::Line::Aux::Transport::Input::Input_ : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf acercon;
@@ -3913,7 +3913,7 @@ class Native::Line::Aux::Transport::Input::Input : public ydk::Enum
 
 };
 
-class Native::Line::Aux::Transport::Output::Output : public ydk::Enum
+class Native::Line::Aux::Transport::Output::Output_ : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf acercon;
