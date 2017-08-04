@@ -12,7 +12,7 @@
 namespace cisco_ios_xr {
 namespace ietf_diffserv_action {
 
-class Priority : public ietf_diffserv_policy::ActionType, virtual ydk::Identity
+class Priority : public ietf::ietf_diffserv_policy::ActionType, virtual ydk::Identity
 {
     public:
         Priority();
@@ -21,7 +21,7 @@ class Priority : public ietf_diffserv_policy::ActionType, virtual ydk::Identity
 
 }; // Priority
 
-class MaxRate : public ietf_diffserv_policy::ActionType, virtual ydk::Identity
+class MaxRate : public ietf::ietf_diffserv_policy::ActionType, virtual ydk::Identity
 {
     public:
         MaxRate();
@@ -30,7 +30,7 @@ class MaxRate : public ietf_diffserv_policy::ActionType, virtual ydk::Identity
 
 }; // MaxRate
 
-class AlgorithmicDrop : public ietf_diffserv_policy::ActionType, virtual ydk::Identity
+class AlgorithmicDrop : public ietf::ietf_diffserv_policy::ActionType, virtual ydk::Identity
 {
     public:
         AlgorithmicDrop();
@@ -57,7 +57,7 @@ class MeterActionType : public virtual ydk::Identity
 
 }; // MeterActionType
 
-class MinRate : public ietf_diffserv_policy::ActionType, virtual ydk::Identity
+class MinRate : public ietf::ietf_diffserv_policy::ActionType, virtual ydk::Identity
 {
     public:
         MinRate();
@@ -66,7 +66,7 @@ class MinRate : public ietf_diffserv_policy::ActionType, virtual ydk::Identity
 
 }; // MinRate
 
-class Marking : public ietf_diffserv_policy::ActionType, virtual ydk::Identity
+class Marking : public ietf::ietf_diffserv_policy::ActionType, virtual ydk::Identity
 {
     public:
         Marking();
@@ -75,7 +75,7 @@ class Marking : public ietf_diffserv_policy::ActionType, virtual ydk::Identity
 
 }; // Marking
 
-class Meter : public ietf_diffserv_policy::ActionType, virtual ydk::Identity
+class Meter : public ietf::ietf_diffserv_policy::ActionType, virtual ydk::Identity
 {
     public:
         Meter();

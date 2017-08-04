@@ -12,7 +12,7 @@
 namespace cisco_ios_xr {
 namespace ietf_ospf {
 
-class Ospfv2 : public ietf_routing::RoutingProtocol, virtual ydk::Identity
+class Ospfv2 : public ietf::ietf_routing::RoutingProtocol, virtual ydk::Identity
 {
     public:
         Ospfv2();
@@ -21,7 +21,7 @@ class Ospfv2 : public ietf_routing::RoutingProtocol, virtual ydk::Identity
 
 }; // Ospfv2
 
-class Ospfv3 : public ietf_routing::RoutingProtocol, virtual ydk::Identity
+class Ospfv3 : public ietf::ietf_routing::RoutingProtocol, virtual ydk::Identity
 {
     public:
         Ospfv3();
@@ -39,7 +39,7 @@ class OperationMode : public virtual ydk::Identity
 
 }; // OperationMode
 
-class Ospf : public ietf_routing::RoutingProtocol, virtual ydk::Identity
+class Ospf : public ietf::ietf_routing::RoutingProtocol, virtual ydk::Identity
 {
     public:
         Ospf();

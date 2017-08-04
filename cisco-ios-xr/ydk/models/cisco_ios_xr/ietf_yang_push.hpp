@@ -12,7 +12,7 @@
 namespace cisco_ios_xr {
 namespace ietf_yang_push {
 
-class YangPush : public ietf_event_notifications::Stream, virtual ydk::Identity
+class YangPush : public ietf::ietf_event_notifications::Stream, virtual ydk::Identity
 {
     public:
         YangPush();
@@ -21,7 +21,7 @@ class YangPush : public ietf_event_notifications::Stream, virtual ydk::Identity
 
 }; // YangPush
 
-class CustomStream : public ietf_event_notifications::Stream, virtual ydk::Identity
+class CustomStream : public ietf::ietf_event_notifications::Stream, virtual ydk::Identity
 {
     public:
         CustomStream();
@@ -30,7 +30,7 @@ class CustomStream : public ietf_event_notifications::Stream, virtual ydk::Ident
 
 }; // CustomStream
 
-class ErrorDataNotAuthorized : public ietf_event_notifications::Error, virtual ydk::Identity
+class ErrorDataNotAuthorized : public ietf::ietf_event_notifications::Error, virtual ydk::Identity
 {
     public:
         ErrorDataNotAuthorized();
@@ -39,7 +39,7 @@ class ErrorDataNotAuthorized : public ietf_event_notifications::Error, virtual y
 
 }; // ErrorDataNotAuthorized
 
-class Http2 : public ietf_event_notifications::Transport, virtual ydk::Identity
+class Http2 : public ietf::ietf_event_notifications::Transport, virtual ydk::Identity
 {
     public:
         Http2();

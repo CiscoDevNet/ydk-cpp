@@ -12,7 +12,7 @@
 namespace cisco_ios_xr {
 namespace iana_if_type {
 
-class IanaInterfaceType : public ietf_interfaces::InterfaceType, virtual ydk::Identity
+class IanaInterfaceType : public ietf::ietf_interfaces::InterfaceType, virtual ydk::Identity
 {
     public:
         IanaInterfaceType();

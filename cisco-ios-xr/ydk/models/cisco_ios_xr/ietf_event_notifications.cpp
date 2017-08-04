@@ -4103,12 +4103,12 @@ Error::~Error()
 {
 }
 
-Netconf::Netconf()
+NETCONF::NETCONF()
      : Identity("urn:ietf:params:xml:ns:yang:ietf-event-notifications", "ietf-event-notifications", "ietf-event-notifications:NETCONF")
 {
 }
 
-Netconf::~Netconf()
+NETCONF::~NETCONF()
 {
 }
 

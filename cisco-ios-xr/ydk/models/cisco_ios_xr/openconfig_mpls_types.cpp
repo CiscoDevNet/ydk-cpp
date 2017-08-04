@@ -56,12 +56,12 @@ PathSetupProtocol::~PathSetupProtocol()
 {
 }
 
-TunnelType::TunnelType()
+TunnelType_::TunnelType_()
      : Identity("http://openconfig.net/yang/mpls-types", "openconfig-mpls-types", "openconfig-mpls-types:tunnel-type")
 {
 }
 
-TunnelType::~TunnelType()
+TunnelType_::~TunnelType_()
 {
 }
 

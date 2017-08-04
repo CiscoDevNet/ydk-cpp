@@ -55,11 +55,11 @@ class PathSetupProtocol : public virtual ydk::Identity
 
 }; // PathSetupProtocol
 
-class TunnelType : public virtual ydk::Identity
+class TunnelType_ : public virtual ydk::Identity
 {
     public:
-        TunnelType();
-        ~TunnelType();
+        TunnelType_();
+        ~TunnelType_();
 
 
 }; // TunnelType
@@ -91,7 +91,7 @@ class Implicit : public openconfig_mpls_types::NullLabelType, virtual ydk::Ident
 
 }; // Implicit
 
-class P2P : public openconfig_mpls_types::TunnelType, virtual ydk::Identity
+class P2P : public openconfig_mpls_types::TunnelType_, virtual ydk::Identity
 {
     public:
         P2P();
@@ -100,7 +100,7 @@ class P2P : public openconfig_mpls_types::TunnelType, virtual ydk::Identity
 
 }; // P2P
 
-class P2Mp : public openconfig_mpls_types::TunnelType, virtual ydk::Identity
+class P2Mp : public openconfig_mpls_types::TunnelType_, virtual ydk::Identity
 {
     public:
         P2Mp();
