@@ -17746,11 +17746,11 @@ const Enum::YLeaf Native::Cts::Logging::verbose {0, "verbose"};
 
 const Enum::YLeaf Native::Cts::SgEpg::translation {0, "translation"};
 
-const Enum::YLeaf Native::Cts::Cache::NvStorage_::NvStorage::bootflash__COLON__ {0, "bootflash:"};
-const Enum::YLeaf Native::Cts::Cache::NvStorage_::NvStorage::crashinfo__COLON__ {1, "crashinfo:"};
-const Enum::YLeaf Native::Cts::Cache::NvStorage_::NvStorage::kinfo__COLON__ {2, "kinfo:"};
-const Enum::YLeaf Native::Cts::Cache::NvStorage_::NvStorage::slot0__COLON__ {3, "slot0:"};
-const Enum::YLeaf Native::Cts::Cache::NvStorage_::NvStorage::usb0__COLON__ {4, "usb0:"};
+const Enum::YLeaf Native::Cts::Cache::NvStorage::NvStorage_::bootflash__COLON__ {0, "bootflash:"};
+const Enum::YLeaf Native::Cts::Cache::NvStorage::NvStorage_::crashinfo__COLON__ {1, "crashinfo:"};
+const Enum::YLeaf Native::Cts::Cache::NvStorage::NvStorage_::kinfo__COLON__ {2, "kinfo:"};
+const Enum::YLeaf Native::Cts::Cache::NvStorage::NvStorage_::slot0__COLON__ {3, "slot0:"};
+const Enum::YLeaf Native::Cts::Cache::NvStorage::NvStorage_::usb0__COLON__ {4, "usb0:"};
 
 const Enum::YLeaf Native::Cts::CriticalAuthentication::Default_::Pmk::Type::Y_0 {0, "0"};
 const Enum::YLeaf Native::Cts::CriticalAuthentication::Default_::Pmk::Type::Y_6 {1, "6"};
