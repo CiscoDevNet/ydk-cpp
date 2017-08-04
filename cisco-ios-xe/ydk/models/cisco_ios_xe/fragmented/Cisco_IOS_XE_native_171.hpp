@@ -554,7 +554,7 @@ class Native::Line::Vty::Transport::Input : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeafList input; //type: list of  Input
-        class Input;
+        class Input_;
 
 }; // Native::Line::Vty::Transport::Input
 
@@ -576,7 +576,7 @@ class Native::Line::Vty::Transport::Output : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeafList output; //type: list of  Output
-        class Output;
+        class Output_;
 
 }; // Native::Line::Vty::Transport::Output
 
@@ -3684,7 +3684,7 @@ class Native::Line::Vty::Password::Type : public ydk::Enum
 
 };
 
-class Native::Line::Vty::Transport::Input::Input : public ydk::Enum
+class Native::Line::Vty::Transport::Input::Input_ : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf acercon;
@@ -3703,7 +3703,7 @@ class Native::Line::Vty::Transport::Input::Input : public ydk::Enum
 
 };
 
-class Native::Line::Vty::Transport::Output::Output : public ydk::Enum
+class Native::Line::Vty::Transport::Output::Output_ : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf acercon;

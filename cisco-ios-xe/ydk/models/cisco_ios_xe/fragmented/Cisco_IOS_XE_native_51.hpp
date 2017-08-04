@@ -2466,7 +2466,7 @@ class Native::Interface::PortChannelSubinterface::PortChannel::Switchport::Acces
 
         ydk::YLeaf vlan; //type: one of enumeration, uint16
         ydk::YLeaf name; //type: string
-        class Vlan;
+        class Vlan_;
 
 }; // Native::Interface::PortChannelSubinterface::PortChannel::Switchport::Access::Vlan
 
@@ -2895,7 +2895,7 @@ class Native::Interface::PortChannelSubinterface::PortChannel::Switchport::Voice
 
         ydk::YLeaf vlan; //type: one of string, enumeration, uint16
         ydk::YLeaf name; //type: string
-        class Vlan;
+        class Vlan_;
 
 }; // Native::Interface::PortChannelSubinterface::PortChannel::Switchport::Voice::Vlan
 
@@ -3863,7 +3863,7 @@ class Native::Interface::PortChannelSubinterface::PortChannel::Duplex : public y
 
 };
 
-class Native::Interface::PortChannelSubinterface::PortChannel::Switchport::Access::Vlan::Vlan : public ydk::Enum
+class Native::Interface::PortChannelSubinterface::PortChannel::Switchport::Access::Vlan::Vlan_ : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf dynamic;
@@ -3911,7 +3911,7 @@ class Native::Interface::PortChannelSubinterface::PortChannel::Switchport::Trunk
 
 };
 
-class Native::Interface::PortChannelSubinterface::PortChannel::Switchport::Voice::Vlan::Vlan : public ydk::Enum
+class Native::Interface::PortChannelSubinterface::PortChannel::Switchport::Voice::Vlan::Vlan_ : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf dot1p;

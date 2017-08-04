@@ -1113,7 +1113,7 @@ class Native::Line::LineList::Transport::Input : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeafList input; //type: list of  Input
-        class Input;
+        class Input_;
 
 }; // Native::Line::LineList::Transport::Input
 
@@ -1135,7 +1135,7 @@ class Native::Line::LineList::Transport::Output : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeafList output; //type: list of  Output
-        class Output;
+        class Output_;
 
 }; // Native::Line::LineList::Transport::Output
 
@@ -2166,7 +2166,7 @@ class Native::Line::Aux::Transport::Input : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeafList input; //type: list of  Input
-        class Input;
+        class Input_;
 
 }; // Native::Line::Aux::Transport::Input
 
@@ -2188,7 +2188,7 @@ class Native::Line::Aux::Transport::Output : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeafList output; //type: list of  Output
-        class Output;
+        class Output_;
 
 }; // Native::Line::Aux::Transport::Output
 
@@ -3219,7 +3219,7 @@ class Native::Line::Console::Transport::Input : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeafList input; //type: list of  Input
-        class Input;
+        class Input_;
 
 }; // Native::Line::Console::Transport::Input
 
@@ -3241,7 +3241,7 @@ class Native::Line::Console::Transport::Output : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeafList output; //type: list of  Output
-        class Output;
+        class Output_;
 
 }; // Native::Line::Console::Transport::Output
 
@@ -3782,7 +3782,7 @@ class Native::Line::LineList::Password::Type : public ydk::Enum
 
 };
 
-class Native::Line::LineList::Transport::Input::Input : public ydk::Enum
+class Native::Line::LineList::Transport::Input::Input_ : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf acercon;
@@ -3801,7 +3801,7 @@ class Native::Line::LineList::Transport::Input::Input : public ydk::Enum
 
 };
 
-class Native::Line::LineList::Transport::Output::Output : public ydk::Enum
+class Native::Line::LineList::Transport::Output::Output_ : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf acercon;
@@ -4006,7 +4006,7 @@ class Native::Line::Console::Password::Type : public ydk::Enum
 
 };
 
-class Native::Line::Console::Transport::Input::Input : public ydk::Enum
+class Native::Line::Console::Transport::Input::Input_ : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf acercon;
@@ -4025,7 +4025,7 @@ class Native::Line::Console::Transport::Input::Input : public ydk::Enum
 
 };
 
-class Native::Line::Console::Transport::Output::Output : public ydk::Enum
+class Native::Line::Console::Transport::Output::Output_ : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf acercon;

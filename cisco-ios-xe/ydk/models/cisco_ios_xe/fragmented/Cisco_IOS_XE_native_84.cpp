@@ -17734,10 +17734,10 @@ const Enum::YLeaf Native::Crypto::Pki::Trustpool::Import::Url::File::tar__COLON_
 const Enum::YLeaf Native::Crypto::Pki::Trustpool::Import::Url::File::tftp__COLON__ {13, "tftp:"};
 const Enum::YLeaf Native::Crypto::Pki::Trustpool::Import::Url::File::tmpsys__COLON__ {14, "tmpsys:"};
 
-const Enum::YLeaf Native::Crypto::TlsTunnel::TlsTunnelList::Protection::Protection::dhe_psk_aes128_cbc_sha1 {0, "dhe-psk-aes128-cbc-sha1"};
-const Enum::YLeaf Native::Crypto::TlsTunnel::TlsTunnelList::Protection::Protection::dhe_psk_aes256_cbc_sha1 {1, "dhe-psk-aes256-cbc-sha1"};
-const Enum::YLeaf Native::Crypto::TlsTunnel::TlsTunnelList::Protection::Protection::psk_aes128_cbc_sha1 {2, "psk-aes128-cbc-sha1"};
-const Enum::YLeaf Native::Crypto::TlsTunnel::TlsTunnelList::Protection::Protection::psk_aes256_cbc_sha1 {3, "psk-aes256-cbc-sha1"};
+const Enum::YLeaf Native::Crypto::TlsTunnel::TlsTunnelList::Protection::Protection_::dhe_psk_aes128_cbc_sha1 {0, "dhe-psk-aes128-cbc-sha1"};
+const Enum::YLeaf Native::Crypto::TlsTunnel::TlsTunnelList::Protection::Protection_::dhe_psk_aes256_cbc_sha1 {1, "dhe-psk-aes256-cbc-sha1"};
+const Enum::YLeaf Native::Crypto::TlsTunnel::TlsTunnelList::Protection::Protection_::psk_aes128_cbc_sha1 {2, "psk-aes128-cbc-sha1"};
+const Enum::YLeaf Native::Crypto::TlsTunnel::TlsTunnelList::Protection::Protection_::psk_aes256_cbc_sha1 {3, "psk-aes256-cbc-sha1"};
 
 const Enum::YLeaf Native::Crypto::TlsTunnel::TlsTunnelList::Psk::Id::Key::Encryption::Y_0 {0, "0"};
 const Enum::YLeaf Native::Crypto::TlsTunnel::TlsTunnelList::Psk::Id::Key::Encryption::Y_6 {1, "6"};
@@ -17746,11 +17746,11 @@ const Enum::YLeaf Native::Cts::Logging::verbose {0, "verbose"};
 
 const Enum::YLeaf Native::Cts::SgEpg::translation {0, "translation"};
 
-const Enum::YLeaf Native::Cts::Cache::NvStorage::NvStorage::bootflash__COLON__ {0, "bootflash:"};
-const Enum::YLeaf Native::Cts::Cache::NvStorage::NvStorage::crashinfo__COLON__ {1, "crashinfo:"};
-const Enum::YLeaf Native::Cts::Cache::NvStorage::NvStorage::kinfo__COLON__ {2, "kinfo:"};
-const Enum::YLeaf Native::Cts::Cache::NvStorage::NvStorage::slot0__COLON__ {3, "slot0:"};
-const Enum::YLeaf Native::Cts::Cache::NvStorage::NvStorage::usb0__COLON__ {4, "usb0:"};
+const Enum::YLeaf Native::Cts::Cache::NvStorage_::NvStorage::bootflash__COLON__ {0, "bootflash:"};
+const Enum::YLeaf Native::Cts::Cache::NvStorage_::NvStorage::crashinfo__COLON__ {1, "crashinfo:"};
+const Enum::YLeaf Native::Cts::Cache::NvStorage_::NvStorage::kinfo__COLON__ {2, "kinfo:"};
+const Enum::YLeaf Native::Cts::Cache::NvStorage_::NvStorage::slot0__COLON__ {3, "slot0:"};
+const Enum::YLeaf Native::Cts::Cache::NvStorage_::NvStorage::usb0__COLON__ {4, "usb0:"};
 
 const Enum::YLeaf Native::Cts::CriticalAuthentication::Default_::Pmk::Type::Y_0 {0, "0"};
 const Enum::YLeaf Native::Cts::CriticalAuthentication::Default_::Pmk::Type::Y_6 {1, "6"};

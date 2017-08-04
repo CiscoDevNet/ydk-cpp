@@ -527,7 +527,7 @@ class Native::PortChannel::LoadBalance : public ydk::Entity
         class Extended; //type: Native::PortChannel::LoadBalance::Extended
 
         std::shared_ptr<Cisco_IOS_XE_native::Native::PortChannel::LoadBalance::Extended> extended; // presence node
-                class LoadBalance;
+                class LoadBalance_;
 
 }; // Native::PortChannel::LoadBalance
 
@@ -549,7 +549,7 @@ class Native::PortChannel::LoadBalance::Extended : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeafList extended; //type: list of  Extended
-        class Extended;
+        class Extended_;
 
 }; // Native::PortChannel::LoadBalance::Extended
 
@@ -3604,7 +3604,7 @@ class Native::AccessList : public ydk::Entity
 
 }; // Native::AccessList
 
-class Native::PortChannel::LoadBalance::LoadBalance : public ydk::Enum
+class Native::PortChannel::LoadBalance::LoadBalance_ : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf dst_ip;
@@ -3623,7 +3623,7 @@ class Native::PortChannel::LoadBalance::LoadBalance : public ydk::Enum
 
 };
 
-class Native::PortChannel::LoadBalance::Extended::Extended : public ydk::Enum
+class Native::PortChannel::LoadBalance::Extended::Extended_ : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf dst_ip;

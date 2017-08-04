@@ -379,7 +379,7 @@ class Native::Crypto::TlsTunnel::TlsTunnelList::Protection : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf protection; //type: Protection
-        class Protection;
+        class Protection_;
 
 }; // Native::Crypto::TlsTunnel::TlsTunnelList::Protection
 
@@ -818,7 +818,7 @@ class Native::Cts::Cache::NvStorage : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf nv_storage; //type: NvStorage
-        class NvStorage;
+        class NvStorage_;
 
 }; // Native::Cts::Cache::NvStorage
 
@@ -3667,7 +3667,7 @@ class Native::Crypto::Pki::Trustpool::Import::Url::File : public ydk::Enum
 
 };
 
-class Native::Crypto::TlsTunnel::TlsTunnelList::Protection::Protection : public ydk::Enum
+class Native::Crypto::TlsTunnel::TlsTunnelList::Protection::Protection_ : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf dhe_psk_aes128_cbc_sha1;
@@ -3699,7 +3699,7 @@ class Native::Cts::SgEpg : public ydk::Enum
 
 };
 
-class Native::Cts::Cache::NvStorage::NvStorage : public ydk::Enum
+class Native::Cts::Cache::NvStorage::NvStorage_ : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf bootflash__COLON__;

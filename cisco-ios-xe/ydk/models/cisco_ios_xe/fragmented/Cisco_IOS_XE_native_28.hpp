@@ -304,7 +304,7 @@ class Native::Interface::Gigabitethernet::Switchport::Voice::Vlan : public ydk::
 
         ydk::YLeaf vlan; //type: one of string, enumeration, uint16
         ydk::YLeaf name; //type: string
-        class Vlan;
+        class Vlan_;
 
 }; // Native::Interface::Gigabitethernet::Switchport::Voice::Vlan
 
@@ -3673,7 +3673,7 @@ class Native::Interface::Gigabitethernet::Switchport::Trunk::Native_::Vlan : pub
 
 };
 
-class Native::Interface::Gigabitethernet::Switchport::Voice::Vlan::Vlan : public ydk::Enum
+class Native::Interface::Gigabitethernet::Switchport::Voice::Vlan::Vlan_ : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf dot1p;

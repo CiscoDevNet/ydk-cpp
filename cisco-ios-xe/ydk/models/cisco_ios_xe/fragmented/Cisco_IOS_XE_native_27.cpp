@@ -18043,7 +18043,7 @@ const Enum::YLeaf Native::Interface::Gigabitethernet::Duplex::half {2, "half"};
 const Enum::YLeaf Native::Interface::Gigabitethernet::Nat66::inside {0, "inside"};
 const Enum::YLeaf Native::Interface::Gigabitethernet::Nat66::outside {1, "outside"};
 
-const Enum::YLeaf Native::Interface::Gigabitethernet::Switchport::Access::Vlan::Vlan::dynamic {0, "dynamic"};
+const Enum::YLeaf Native::Interface::Gigabitethernet::Switchport::Access::Vlan::Vlan_::dynamic {0, "dynamic"};
 
 const Enum::YLeaf Native::Interface::Gigabitethernet::Switchport::Mode::Dynamic::auto_ {0, "auto"};
 const Enum::YLeaf Native::Interface::Gigabitethernet::Switchport::Mode::Dynamic::desirable {1, "desirable"};

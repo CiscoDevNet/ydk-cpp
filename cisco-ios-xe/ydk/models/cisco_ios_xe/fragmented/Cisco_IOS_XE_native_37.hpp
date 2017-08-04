@@ -1590,7 +1590,7 @@ class Native::Interface::Fortygigabitethernet::Switchport::Access::Vlan : public
 
         ydk::YLeaf vlan; //type: one of enumeration, uint16
         ydk::YLeaf name; //type: string
-        class Vlan;
+        class Vlan_;
 
 }; // Native::Interface::Fortygigabitethernet::Switchport::Access::Vlan
 
@@ -2019,7 +2019,7 @@ class Native::Interface::Fortygigabitethernet::Switchport::Voice::Vlan : public 
 
         ydk::YLeaf vlan; //type: one of string, enumeration, uint16
         ydk::YLeaf name; //type: string
-        class Vlan;
+        class Vlan_;
 
 }; // Native::Interface::Fortygigabitethernet::Switchport::Voice::Vlan
 
@@ -3798,7 +3798,7 @@ class Native::Interface::Fortygigabitethernet::Duplex : public ydk::Enum
 
 };
 
-class Native::Interface::Fortygigabitethernet::Switchport::Access::Vlan::Vlan : public ydk::Enum
+class Native::Interface::Fortygigabitethernet::Switchport::Access::Vlan::Vlan_ : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf dynamic;
@@ -3846,7 +3846,7 @@ class Native::Interface::Fortygigabitethernet::Switchport::Trunk::Native_::Vlan 
 
 };
 
-class Native::Interface::Fortygigabitethernet::Switchport::Voice::Vlan::Vlan : public ydk::Enum
+class Native::Interface::Fortygigabitethernet::Switchport::Voice::Vlan::Vlan_ : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf dot1p;

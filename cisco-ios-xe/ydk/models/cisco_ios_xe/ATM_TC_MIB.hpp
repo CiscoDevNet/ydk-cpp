@@ -12,7 +12,7 @@
 namespace cisco_ios_xe {
 namespace ATM_TC_MIB {
 
-class Atmclpnotaggingscrcdvt : public ietf_yang_smiv2::ObjectIdentity, virtual ydk::Identity
+class Atmclpnotaggingscrcdvt : public ietf::ietf_yang_smiv2::ObjectIdentity, virtual ydk::Identity
 {
     public:
         Atmclpnotaggingscrcdvt();
@@ -21,7 +21,7 @@ class Atmclpnotaggingscrcdvt : public ietf_yang_smiv2::ObjectIdentity, virtual y
 
 }; // Atmclpnotaggingscrcdvt
 
-class Atmclptransparentnoscr : public ietf_yang_smiv2::ObjectIdentity, virtual ydk::Identity
+class Atmclptransparentnoscr : public ietf::ietf_yang_smiv2::ObjectIdentity, virtual ydk::Identity
 {
     public:
         Atmclptransparentnoscr();
@@ -30,7 +30,7 @@ class Atmclptransparentnoscr : public ietf_yang_smiv2::ObjectIdentity, virtual y
 
 }; // Atmclptransparentnoscr
 
-class Atmclpnotaggingmcr : public ietf_yang_smiv2::ObjectIdentity, virtual ydk::Identity
+class Atmclpnotaggingmcr : public ietf::ietf_yang_smiv2::ObjectIdentity, virtual ydk::Identity
 {
     public:
         Atmclpnotaggingmcr();
@@ -39,7 +39,7 @@ class Atmclpnotaggingmcr : public ietf_yang_smiv2::ObjectIdentity, virtual ydk::
 
 }; // Atmclpnotaggingmcr
 
-class Atmclptaggingnoscr : public ietf_yang_smiv2::ObjectIdentity, virtual ydk::Identity
+class Atmclptaggingnoscr : public ietf::ietf_yang_smiv2::ObjectIdentity, virtual ydk::Identity
 {
     public:
         Atmclptaggingnoscr();
@@ -48,7 +48,7 @@ class Atmclptaggingnoscr : public ietf_yang_smiv2::ObjectIdentity, virtual ydk::
 
 }; // Atmclptaggingnoscr
 
-class Atmnoclpnoscrcdvt : public ietf_yang_smiv2::ObjectIdentity, virtual ydk::Identity
+class Atmnoclpnoscrcdvt : public ietf::ietf_yang_smiv2::ObjectIdentity, virtual ydk::Identity
 {
     public:
         Atmnoclpnoscrcdvt();
@@ -57,7 +57,7 @@ class Atmnoclpnoscrcdvt : public ietf_yang_smiv2::ObjectIdentity, virtual ydk::I
 
 }; // Atmnoclpnoscrcdvt
 
-class Atmclpnotaggingscr : public ietf_yang_smiv2::ObjectIdentity, virtual ydk::Identity
+class Atmclpnotaggingscr : public ietf::ietf_yang_smiv2::ObjectIdentity, virtual ydk::Identity
 {
     public:
         Atmclpnotaggingscr();
@@ -66,7 +66,7 @@ class Atmclpnotaggingscr : public ietf_yang_smiv2::ObjectIdentity, virtual ydk::
 
 }; // Atmclpnotaggingscr
 
-class Atmclptaggingscrcdvt : public ietf_yang_smiv2::ObjectIdentity, virtual ydk::Identity
+class Atmclptaggingscrcdvt : public ietf::ietf_yang_smiv2::ObjectIdentity, virtual ydk::Identity
 {
     public:
         Atmclptaggingscrcdvt();
@@ -75,7 +75,7 @@ class Atmclptaggingscrcdvt : public ietf_yang_smiv2::ObjectIdentity, virtual ydk
 
 }; // Atmclptaggingscrcdvt
 
-class Atmnoclpnoscr : public ietf_yang_smiv2::ObjectIdentity, virtual ydk::Identity
+class Atmnoclpnoscr : public ietf::ietf_yang_smiv2::ObjectIdentity, virtual ydk::Identity
 {
     public:
         Atmnoclpnoscr();
@@ -84,7 +84,7 @@ class Atmnoclpnoscr : public ietf_yang_smiv2::ObjectIdentity, virtual ydk::Ident
 
 }; // Atmnoclpnoscr
 
-class Atmnotrafficdescriptor : public ietf_yang_smiv2::ObjectIdentity, virtual ydk::Identity
+class Atmnotrafficdescriptor : public ietf::ietf_yang_smiv2::ObjectIdentity, virtual ydk::Identity
 {
     public:
         Atmnotrafficdescriptor();
@@ -93,7 +93,7 @@ class Atmnotrafficdescriptor : public ietf_yang_smiv2::ObjectIdentity, virtual y
 
 }; // Atmnotrafficdescriptor
 
-class Atmclpnotaggingnoscr : public ietf_yang_smiv2::ObjectIdentity, virtual ydk::Identity
+class Atmclpnotaggingnoscr : public ietf::ietf_yang_smiv2::ObjectIdentity, virtual ydk::Identity
 {
     public:
         Atmclpnotaggingnoscr();
@@ -102,7 +102,7 @@ class Atmclpnotaggingnoscr : public ietf_yang_smiv2::ObjectIdentity, virtual ydk
 
 }; // Atmclpnotaggingnoscr
 
-class Atmclptaggingscr : public ietf_yang_smiv2::ObjectIdentity, virtual ydk::Identity
+class Atmclptaggingscr : public ietf::ietf_yang_smiv2::ObjectIdentity, virtual ydk::Identity
 {
     public:
         Atmclptaggingscr();
@@ -111,7 +111,7 @@ class Atmclptaggingscr : public ietf_yang_smiv2::ObjectIdentity, virtual ydk::Id
 
 }; // Atmclptaggingscr
 
-class Atmnoclptaggingnoscr : public ietf_yang_smiv2::ObjectIdentity, virtual ydk::Identity
+class Atmnoclptaggingnoscr : public ietf::ietf_yang_smiv2::ObjectIdentity, virtual ydk::Identity
 {
     public:
         Atmnoclptaggingnoscr();
@@ -120,7 +120,7 @@ class Atmnoclptaggingnoscr : public ietf_yang_smiv2::ObjectIdentity, virtual ydk
 
 }; // Atmnoclptaggingnoscr
 
-class Atmnoclpscrcdvt : public ietf_yang_smiv2::ObjectIdentity, virtual ydk::Identity
+class Atmnoclpscrcdvt : public ietf::ietf_yang_smiv2::ObjectIdentity, virtual ydk::Identity
 {
     public:
         Atmnoclpscrcdvt();
@@ -129,7 +129,7 @@ class Atmnoclpscrcdvt : public ietf_yang_smiv2::ObjectIdentity, virtual ydk::Ide
 
 }; // Atmnoclpscrcdvt
 
-class Atmclptransparentscr : public ietf_yang_smiv2::ObjectIdentity, virtual ydk::Identity
+class Atmclptransparentscr : public ietf::ietf_yang_smiv2::ObjectIdentity, virtual ydk::Identity
 {
     public:
         Atmclptransparentscr();
@@ -138,7 +138,7 @@ class Atmclptransparentscr : public ietf_yang_smiv2::ObjectIdentity, virtual ydk
 
 }; // Atmclptransparentscr
 
-class Atmnoclpscr : public ietf_yang_smiv2::ObjectIdentity, virtual ydk::Identity
+class Atmnoclpscr : public ietf::ietf_yang_smiv2::ObjectIdentity, virtual ydk::Identity
 {
     public:
         Atmnoclpscr();

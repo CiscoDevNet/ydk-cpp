@@ -2617,7 +2617,7 @@ class Native::Interface::Tengigabitethernet::Switchport::Access::Vlan : public y
 
         ydk::YLeaf vlan; //type: one of enumeration, uint16
         ydk::YLeaf name; //type: string
-        class Vlan;
+        class Vlan_;
 
 }; // Native::Interface::Tengigabitethernet::Switchport::Access::Vlan
 
@@ -3046,7 +3046,7 @@ class Native::Interface::Tengigabitethernet::Switchport::Voice::Vlan : public yd
 
         ydk::YLeaf vlan; //type: one of string, enumeration, uint16
         ydk::YLeaf name; //type: string
-        class Vlan;
+        class Vlan_;
 
 }; // Native::Interface::Tengigabitethernet::Switchport::Voice::Vlan
 
@@ -3908,7 +3908,7 @@ class Native::Interface::Tengigabitethernet::Nat66 : public ydk::Enum
 
 };
 
-class Native::Interface::Tengigabitethernet::Switchport::Access::Vlan::Vlan : public ydk::Enum
+class Native::Interface::Tengigabitethernet::Switchport::Access::Vlan::Vlan_ : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf dynamic;
@@ -3956,7 +3956,7 @@ class Native::Interface::Tengigabitethernet::Switchport::Trunk::Native_::Vlan : 
 
 };
 
-class Native::Interface::Tengigabitethernet::Switchport::Voice::Vlan::Vlan : public ydk::Enum
+class Native::Interface::Tengigabitethernet::Switchport::Voice::Vlan::Vlan_ : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf dot1p;

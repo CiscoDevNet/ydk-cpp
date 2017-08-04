@@ -17139,28 +17139,28 @@ bool Native::AccessList::has_leaf_or_child_of_name(const std::string & name) con
     return false;
 }
 
-const Enum::YLeaf Native::PortChannel::LoadBalance::LoadBalance::dst_ip {0, "dst-ip"};
-const Enum::YLeaf Native::PortChannel::LoadBalance::LoadBalance::dst_mac {1, "dst-mac"};
-const Enum::YLeaf Native::PortChannel::LoadBalance::LoadBalance::dst_mixed_ip_port {2, "dst-mixed-ip-port"};
-const Enum::YLeaf Native::PortChannel::LoadBalance::LoadBalance::dst_port {3, "dst-port"};
-const Enum::YLeaf Native::PortChannel::LoadBalance::LoadBalance::mpls {4, "mpls"};
-const Enum::YLeaf Native::PortChannel::LoadBalance::LoadBalance::src_dst_ip {5, "src-dst-ip"};
-const Enum::YLeaf Native::PortChannel::LoadBalance::LoadBalance::src_dst_mac {6, "src-dst-mac"};
-const Enum::YLeaf Native::PortChannel::LoadBalance::LoadBalance::src_dst_mixed_ip_port {7, "src-dst-mixed-ip-port"};
-const Enum::YLeaf Native::PortChannel::LoadBalance::LoadBalance::src_dst_port {8, "src-dst-port"};
-const Enum::YLeaf Native::PortChannel::LoadBalance::LoadBalance::src_ip {9, "src-ip"};
-const Enum::YLeaf Native::PortChannel::LoadBalance::LoadBalance::src_mac {10, "src-mac"};
-const Enum::YLeaf Native::PortChannel::LoadBalance::LoadBalance::src_mixed_ip_port {11, "src-mixed-ip-port"};
-const Enum::YLeaf Native::PortChannel::LoadBalance::LoadBalance::src_port {12, "src-port"};
+const Enum::YLeaf Native::PortChannel::LoadBalance::LoadBalance_::dst_ip {0, "dst-ip"};
+const Enum::YLeaf Native::PortChannel::LoadBalance::LoadBalance_::dst_mac {1, "dst-mac"};
+const Enum::YLeaf Native::PortChannel::LoadBalance::LoadBalance_::dst_mixed_ip_port {2, "dst-mixed-ip-port"};
+const Enum::YLeaf Native::PortChannel::LoadBalance::LoadBalance_::dst_port {3, "dst-port"};
+const Enum::YLeaf Native::PortChannel::LoadBalance::LoadBalance_::mpls {4, "mpls"};
+const Enum::YLeaf Native::PortChannel::LoadBalance::LoadBalance_::src_dst_ip {5, "src-dst-ip"};
+const Enum::YLeaf Native::PortChannel::LoadBalance::LoadBalance_::src_dst_mac {6, "src-dst-mac"};
+const Enum::YLeaf Native::PortChannel::LoadBalance::LoadBalance_::src_dst_mixed_ip_port {7, "src-dst-mixed-ip-port"};
+const Enum::YLeaf Native::PortChannel::LoadBalance::LoadBalance_::src_dst_port {8, "src-dst-port"};
+const Enum::YLeaf Native::PortChannel::LoadBalance::LoadBalance_::src_ip {9, "src-ip"};
+const Enum::YLeaf Native::PortChannel::LoadBalance::LoadBalance_::src_mac {10, "src-mac"};
+const Enum::YLeaf Native::PortChannel::LoadBalance::LoadBalance_::src_mixed_ip_port {11, "src-mixed-ip-port"};
+const Enum::YLeaf Native::PortChannel::LoadBalance::LoadBalance_::src_port {12, "src-port"};
 
-const Enum::YLeaf Native::PortChannel::LoadBalance::Extended::Extended::dst_ip {0, "dst-ip"};
-const Enum::YLeaf Native::PortChannel::LoadBalance::Extended::Extended::dst_mac {1, "dst-mac"};
-const Enum::YLeaf Native::PortChannel::LoadBalance::Extended::Extended::dst_port {2, "dst-port"};
-const Enum::YLeaf Native::PortChannel::LoadBalance::Extended::Extended::ipv6_label {3, "ipv6-label"};
-const Enum::YLeaf Native::PortChannel::LoadBalance::Extended::Extended::l3_proto {4, "l3-proto"};
-const Enum::YLeaf Native::PortChannel::LoadBalance::Extended::Extended::src_ip {5, "src-ip"};
-const Enum::YLeaf Native::PortChannel::LoadBalance::Extended::Extended::src_mac {6, "src-mac"};
-const Enum::YLeaf Native::PortChannel::LoadBalance::Extended::Extended::src_port {7, "src-port"};
+const Enum::YLeaf Native::PortChannel::LoadBalance::Extended::Extended_::dst_ip {0, "dst-ip"};
+const Enum::YLeaf Native::PortChannel::LoadBalance::Extended::Extended_::dst_mac {1, "dst-mac"};
+const Enum::YLeaf Native::PortChannel::LoadBalance::Extended::Extended_::dst_port {2, "dst-port"};
+const Enum::YLeaf Native::PortChannel::LoadBalance::Extended::Extended_::ipv6_label {3, "ipv6-label"};
+const Enum::YLeaf Native::PortChannel::LoadBalance::Extended::Extended_::l3_proto {4, "l3-proto"};
+const Enum::YLeaf Native::PortChannel::LoadBalance::Extended::Extended_::src_ip {5, "src-ip"};
+const Enum::YLeaf Native::PortChannel::LoadBalance::Extended::Extended_::src_mac {6, "src-mac"};
+const Enum::YLeaf Native::PortChannel::LoadBalance::Extended::Extended_::src_port {7, "src-port"};
 
 const Enum::YLeaf Native::Key::Chain::Key_::CryptographicAlgorithm::aes_128_cmac {0, "aes-128-cmac"};
 const Enum::YLeaf Native::Key::Chain::Key_::CryptographicAlgorithm::aes_256_cmac {1, "aes-256-cmac"};

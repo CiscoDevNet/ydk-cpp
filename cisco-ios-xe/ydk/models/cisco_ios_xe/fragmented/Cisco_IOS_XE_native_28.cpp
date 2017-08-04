@@ -17695,9 +17695,9 @@ const Enum::YLeaf Native::Interface::Gigabitethernet::Switchport::Trunk::Encapsu
 
 const Enum::YLeaf Native::Interface::Gigabitethernet::Switchport::Trunk::Native_::Vlan::tag {0, "tag"};
 
-const Enum::YLeaf Native::Interface::Gigabitethernet::Switchport::Voice::Vlan::Vlan::dot1p {0, "dot1p"};
-const Enum::YLeaf Native::Interface::Gigabitethernet::Switchport::Voice::Vlan::Vlan::none {1, "none"};
-const Enum::YLeaf Native::Interface::Gigabitethernet::Switchport::Voice::Vlan::Vlan::untagged {2, "untagged"};
+const Enum::YLeaf Native::Interface::Gigabitethernet::Switchport::Voice::Vlan::Vlan_::dot1p {0, "dot1p"};
+const Enum::YLeaf Native::Interface::Gigabitethernet::Switchport::Voice::Vlan::Vlan_::none {1, "none"};
+const Enum::YLeaf Native::Interface::Gigabitethernet::Switchport::Voice::Vlan::Vlan_::untagged {2, "untagged"};
 
 const Enum::YLeaf Native::Interface::Gigabitethernet::Backup::Delay::Failure::never {0, "never"};
 

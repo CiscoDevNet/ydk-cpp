@@ -12,7 +12,7 @@
 namespace cisco_ios_xe {
 namespace CISCO_SIP_UA_MIB {
 
-class Ciscosipuamibnotificationprefix : public ietf_yang_smiv2::ObjectIdentity, virtual ydk::Identity
+class Ciscosipuamibnotificationprefix : public ietf::ietf_yang_smiv2::ObjectIdentity, virtual ydk::Identity
 {
     public:
         Ciscosipuamibnotificationprefix();
@@ -21,7 +21,7 @@ class Ciscosipuamibnotificationprefix : public ietf_yang_smiv2::ObjectIdentity, 
 
 }; // Ciscosipuamibnotificationprefix
 
-class Ciscosipuamibnotifications : public ietf_yang_smiv2::ObjectIdentity, virtual ydk::Identity
+class Ciscosipuamibnotifications : public ietf::ietf_yang_smiv2::ObjectIdentity, virtual ydk::Identity
 {
     public:
         Ciscosipuamibnotifications();
