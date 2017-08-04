@@ -19608,7 +19608,7 @@ const Enum::YLeaf Native::Interface::PortChannel::Duplex::half {2, "half"};
 const Enum::YLeaf Native::Interface::PortChannel::Nat66::inside {0, "inside"};
 const Enum::YLeaf Native::Interface::PortChannel::Nat66::outside {1, "outside"};
 
-const Enum::YLeaf Native::Interface::PortChannel::Switchport::Access::Vlan::Vlan::dynamic {0, "dynamic"};
+const Enum::YLeaf Native::Interface::PortChannel::Switchport::Access::Vlan::Vlan_::dynamic {0, "dynamic"};
 
 const Enum::YLeaf Native::Interface::PortChannel::Switchport::Mode::Dynamic::auto_ {0, "auto"};
 const Enum::YLeaf Native::Interface::PortChannel::Switchport::Mode::Dynamic::desirable {1, "desirable"};
@@ -19626,9 +19626,9 @@ const Enum::YLeaf Native::Interface::PortChannel::Switchport::Trunk::Encapsulati
 
 const Enum::YLeaf Native::Interface::PortChannel::Switchport::Trunk::Native_::Vlan::tag {0, "tag"};
 
-const Enum::YLeaf Native::Interface::PortChannel::Switchport::Voice::Vlan::Vlan::dot1p {0, "dot1p"};
-const Enum::YLeaf Native::Interface::PortChannel::Switchport::Voice::Vlan::Vlan::none {1, "none"};
-const Enum::YLeaf Native::Interface::PortChannel::Switchport::Voice::Vlan::Vlan::untagged {2, "untagged"};
+const Enum::YLeaf Native::Interface::PortChannel::Switchport::Voice::Vlan::Vlan_::dot1p {0, "dot1p"};
+const Enum::YLeaf Native::Interface::PortChannel::Switchport::Voice::Vlan::Vlan_::none {1, "none"};
+const Enum::YLeaf Native::Interface::PortChannel::Switchport::Voice::Vlan::Vlan_::untagged {2, "untagged"};
 
 const Enum::YLeaf Native::Interface::PortChannel::Backup::Delay::Failure::never {0, "never"};
 
