@@ -12,7 +12,7 @@
 namespace cisco_ios_xe {
 namespace RMON_MIB {
 
-class Rmoneventsv2 : public ietf_yang_smiv2::ObjectIdentity, virtual ydk::Identity
+class Rmoneventsv2 : public ietf::ietf_yang_smiv2::ObjectIdentity, virtual ydk::Identity
 {
     public:
         Rmoneventsv2();

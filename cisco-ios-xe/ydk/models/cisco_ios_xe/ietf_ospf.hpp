@@ -21,7 +21,7 @@ class IfLinkType : public virtual ydk::Identity
 
 }; // IfLinkType
 
-class Ospfv3 : public ietf_routing::RoutingProtocol, virtual ydk::Identity
+class Ospfv3 : public ietf::ietf_routing::RoutingProtocol, virtual ydk::Identity
 {
     public:
         Ospfv3();
@@ -30,7 +30,7 @@ class Ospfv3 : public ietf_routing::RoutingProtocol, virtual ydk::Identity
 
 }; // Ospfv3
 
-class Ospfv2 : public ietf_routing::RoutingProtocol, virtual ydk::Identity
+class Ospfv2 : public ietf::ietf_routing::RoutingProtocol, virtual ydk::Identity
 {
     public:
         Ospfv2();
@@ -48,7 +48,7 @@ class AreaType : public virtual ydk::Identity
 
 }; // AreaType
 
-class Ospf : public ietf_routing::RoutingProtocol, virtual ydk::Identity
+class Ospf : public ietf::ietf_routing::RoutingProtocol, virtual ydk::Identity
 {
     public:
         Ospf();

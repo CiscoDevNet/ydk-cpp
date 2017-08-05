@@ -12,7 +12,7 @@
 namespace cisco_ios_xe {
 namespace EtherLike_MIB {
 
-class Dot3Errorloopbackerror : public ietf_yang_smiv2::ObjectIdentity, virtual ydk::Identity
+class Dot3Errorloopbackerror : public ietf::ietf_yang_smiv2::ObjectIdentity, virtual ydk::Identity
 {
     public:
         Dot3Errorloopbackerror();
@@ -21,7 +21,7 @@ class Dot3Errorloopbackerror : public ietf_yang_smiv2::ObjectIdentity, virtual y
 
 }; // Dot3Errorloopbackerror
 
-class Dot3Erroriniterror : public ietf_yang_smiv2::ObjectIdentity, virtual ydk::Identity
+class Dot3Erroriniterror : public ietf::ietf_yang_smiv2::ObjectIdentity, virtual ydk::Identity
 {
     public:
         Dot3Erroriniterror();
@@ -30,7 +30,7 @@ class Dot3Erroriniterror : public ietf_yang_smiv2::ObjectIdentity, virtual ydk::
 
 }; // Dot3Erroriniterror
 
-class Dot3Testtdr : public ietf_yang_smiv2::ObjectIdentity, virtual ydk::Identity
+class Dot3Testtdr : public ietf::ietf_yang_smiv2::ObjectIdentity, virtual ydk::Identity
 {
     public:
         Dot3Testtdr();
@@ -39,7 +39,7 @@ class Dot3Testtdr : public ietf_yang_smiv2::ObjectIdentity, virtual ydk::Identit
 
 }; // Dot3Testtdr
 
-class Dot3Testloopback : public ietf_yang_smiv2::ObjectIdentity, virtual ydk::Identity
+class Dot3Testloopback : public ietf::ietf_yang_smiv2::ObjectIdentity, virtual ydk::Identity
 {
     public:
         Dot3Testloopback();

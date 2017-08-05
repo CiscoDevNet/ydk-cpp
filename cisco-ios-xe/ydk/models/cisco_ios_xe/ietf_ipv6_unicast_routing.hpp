@@ -12,7 +12,7 @@
 namespace cisco_ios_xe {
 namespace ietf_ipv6_unicast_routing {
 
-class Ipv6Unicast : public ietf_routing::Ipv6, virtual ydk::Identity
+class Ipv6Unicast : public ietf::ietf_routing::Ipv6, virtual ydk::Identity
 {
     public:
         Ipv6Unicast();

@@ -227,9 +227,9 @@ Transit::~Transit()
 {
 }
 
-const Enum::YLeaf TunnelType::P2P {0, "P2P"};
-const Enum::YLeaf TunnelType::P2MP {1, "P2MP"};
-const Enum::YLeaf TunnelType::MP2MP {2, "MP2MP"};
+const Enum::YLeaf TunnelType_::P2P {0, "P2P"};
+const Enum::YLeaf TunnelType_::P2MP {1, "P2MP"};
+const Enum::YLeaf TunnelType_::MP2MP {2, "MP2MP"};
 
 const Enum::YLeaf MplsLabel::IPV4_EXPLICIT_NULL {0, "IPV4_EXPLICIT_NULL"};
 const Enum::YLeaf MplsLabel::ROUTER_ALERT {1, "ROUTER_ALERT"};

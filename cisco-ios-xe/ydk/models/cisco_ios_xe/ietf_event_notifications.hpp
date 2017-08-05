@@ -726,11 +726,11 @@ class Inactive : public ietf_event_notifications::SubscriptionStreamStatus, virt
 
 }; // Inactive
 
-class Netconf : public ietf_event_notifications::Stream, virtual ydk::Identity
+class NETCONF : public ietf_event_notifications::Stream, virtual ydk::Identity
 {
     public:
-        Netconf();
-        ~Netconf();
+        NETCONF();
+        ~NETCONF();
 
 
 }; // Netconf

@@ -12,7 +12,7 @@
 namespace cisco_ios_xe {
 namespace tailf_netconf_monitoring {
 
-class RestHttp : public ietf_netconf_monitoring::Transport, virtual ydk::Identity
+class RestHttp : public ietf::ietf_netconf_monitoring::Transport, virtual ydk::Identity
 {
     public:
         RestHttp();
@@ -21,7 +21,7 @@ class RestHttp : public ietf_netconf_monitoring::Transport, virtual ydk::Identit
 
 }; // RestHttp
 
-class NetconfTcp : public ietf_netconf_monitoring::Transport, virtual ydk::Identity
+class NetconfTcp : public ietf::ietf_netconf_monitoring::Transport, virtual ydk::Identity
 {
     public:
         NetconfTcp();
@@ -30,7 +30,7 @@ class NetconfTcp : public ietf_netconf_monitoring::Transport, virtual ydk::Ident
 
 }; // NetconfTcp
 
-class CliConsole : public ietf_netconf_monitoring::Transport, virtual ydk::Identity
+class CliConsole : public ietf::ietf_netconf_monitoring::Transport, virtual ydk::Identity
 {
     public:
         CliConsole();
@@ -39,7 +39,7 @@ class CliConsole : public ietf_netconf_monitoring::Transport, virtual ydk::Ident
 
 }; // CliConsole
 
-class CliSsh : public ietf_netconf_monitoring::Transport, virtual ydk::Identity
+class CliSsh : public ietf::ietf_netconf_monitoring::Transport, virtual ydk::Identity
 {
     public:
         CliSsh();
@@ -48,7 +48,7 @@ class CliSsh : public ietf_netconf_monitoring::Transport, virtual ydk::Identity
 
 }; // CliSsh
 
-class WebuiHttp : public ietf_netconf_monitoring::Transport, virtual ydk::Identity
+class WebuiHttp : public ietf::ietf_netconf_monitoring::Transport, virtual ydk::Identity
 {
     public:
         WebuiHttp();
@@ -57,7 +57,7 @@ class WebuiHttp : public ietf_netconf_monitoring::Transport, virtual ydk::Identi
 
 }; // WebuiHttp
 
-class SnmpUdp : public ietf_netconf_monitoring::Transport, virtual ydk::Identity
+class SnmpUdp : public ietf::ietf_netconf_monitoring::Transport, virtual ydk::Identity
 {
     public:
         SnmpUdp();
@@ -66,7 +66,7 @@ class SnmpUdp : public ietf_netconf_monitoring::Transport, virtual ydk::Identity
 
 }; // SnmpUdp
 
-class WebuiHttps : public ietf_netconf_monitoring::Transport, virtual ydk::Identity
+class WebuiHttps : public ietf::ietf_netconf_monitoring::Transport, virtual ydk::Identity
 {
     public:
         WebuiHttps();
@@ -75,7 +75,7 @@ class WebuiHttps : public ietf_netconf_monitoring::Transport, virtual ydk::Ident
 
 }; // WebuiHttps
 
-class RestHttps : public ietf_netconf_monitoring::Transport, virtual ydk::Identity
+class RestHttps : public ietf::ietf_netconf_monitoring::Transport, virtual ydk::Identity
 {
     public:
         RestHttps();
@@ -84,7 +84,7 @@ class RestHttps : public ietf_netconf_monitoring::Transport, virtual ydk::Identi
 
 }; // RestHttps
 
-class CliTcp : public ietf_netconf_monitoring::Transport, virtual ydk::Identity
+class CliTcp : public ietf::ietf_netconf_monitoring::Transport, virtual ydk::Identity
 {
     public:
         CliTcp();

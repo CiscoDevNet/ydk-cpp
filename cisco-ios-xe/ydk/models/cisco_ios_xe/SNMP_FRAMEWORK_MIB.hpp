@@ -12,7 +12,7 @@
 namespace cisco_ios_xe {
 namespace SNMP_FRAMEWORK_MIB {
 
-class Snmpauthprotocols : public ietf_yang_smiv2::ObjectIdentity, virtual ydk::Identity
+class Snmpauthprotocols : public ietf::ietf_yang_smiv2::ObjectIdentity, virtual ydk::Identity
 {
     public:
         Snmpauthprotocols();
@@ -21,7 +21,7 @@ class Snmpauthprotocols : public ietf_yang_smiv2::ObjectIdentity, virtual ydk::I
 
 }; // Snmpauthprotocols
 
-class Snmpprivprotocols : public ietf_yang_smiv2::ObjectIdentity, virtual ydk::Identity
+class Snmpprivprotocols : public ietf::ietf_yang_smiv2::ObjectIdentity, virtual ydk::Identity
 {
     public:
         Snmpprivprotocols();

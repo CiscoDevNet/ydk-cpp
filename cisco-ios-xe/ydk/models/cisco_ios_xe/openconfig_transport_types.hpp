@@ -84,7 +84,7 @@ class Otn_Application_Code : public virtual ydk::Identity
 
 }; // Otn_Application_Code
 
-class Optical_Channel : public openconfig_platform_types::Openconfig_Hardware_Component, virtual ydk::Identity
+class Optical_Channel : public openconfig::openconfig_platform_types::Openconfig_Hardware_Component, virtual ydk::Identity
 {
     public:
         Optical_Channel();

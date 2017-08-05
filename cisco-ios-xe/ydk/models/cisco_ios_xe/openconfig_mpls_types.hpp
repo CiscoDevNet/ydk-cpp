@@ -226,7 +226,7 @@ class Transit : public openconfig_mpls_types::LspRole, virtual ydk::Identity
 
 }; // Transit
 
-class TunnelType : public ydk::Enum
+class TunnelType_ : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf P2P;
